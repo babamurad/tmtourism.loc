@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -18,6 +19,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Navigation\NavigationGroup;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -28,9 +30,29 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('tmtourism')
+            ->brandName('tmtourism
+            ')
 //            ->registration()
 //            ->passwordReset()
+            ->navigationGroups([
+                NavigationGroup::make('Блог')->collapsed(),
+                NavigationGroup::make('Ссылки')->collapsed(),
+            ])
+            ->navigationItems([
+                NavigationItem::make('Google')
+                ->url('https://google.com', true)
+                ->icon('heroicon-o-bookmark')
+                ->group('Ссылки')
+                ->sort(2)
+            ])
+            ->navigationItems([
+                NavigationItem::make('YouTube')
+                    ->url('https://youtube.com', true)
+                    ->icon('heroicon-o-currency-pound')
+                    ->group('Ссылки')
+                    ->sort(1)
+            ])
+            ->sidebarCollapsibleOnDesktop()
             ->colors([
                 'primary' => Color::Amber,
             ])

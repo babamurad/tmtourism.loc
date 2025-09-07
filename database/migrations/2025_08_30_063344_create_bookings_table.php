@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('tour_id')->constrained()->cascadeOnDelete();
-            $table->date('booking_date');
-            $table->unsignedInteger('participants');
-            $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
-            $table->decimal('total_price', 10, 2);
+//            $table->foreignId('tour_group_id')->constrained()->cascadeOnDelete();
+//            $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
+            $table->unsignedTinyInteger('people_count');
+            $table->unsignedInteger('total_price_cents');
+            $table->enum('status', ['pending','confirmed','done','cancelled'])->default('pending');
+            $table->text('notes')->nullable();
+            $table->dateTime('confirmed_at')->nullable();
+            $table->dateTime('cancelled_at')->nullable();
+
+//            $table->index(['tour_group_id','status']);
             $table->timestamps();
         });
     }
