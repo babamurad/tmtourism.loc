@@ -6,8 +6,10 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\DatePicker;
+use Illuminate\Support\Str;
 
 class CategoryForm
 {
@@ -19,14 +21,24 @@ class CategoryForm
                     TextInput::make('title')
                         ->required()
                         ->minLength(5)
-                        ->maxLength(255),
+                        ->maxLength(255)
+                        ->live(true)
+                        ->afterStateUpdated(function (Set $set, ?string $state, string $operation) {
+                            if ($operation === 'edit') {
+                                return;
+                            }
+                            $set('slug', Str::slug($state));
+                        }),
 //                        ->rules('required|min:5|max:255'),
                     TextInput::make('slug')
                         ->required()
                         ->minLength(5)
-                        ->maxLength(255),
+                        ->unique(ignoreRecord: true)
+                        ->helperText('Генерируется автоматически на основе наименования')
+                        ->disabled(),
+
 //                        ->rules('required|min:5|max:255'),
-                    RichEditor::make('content'),
+                    RichEditor::make('content')->required(),
 
                 ])->columnSpan(2),
                 Section::make()->schema([
