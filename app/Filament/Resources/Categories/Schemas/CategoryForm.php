@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Categories\Schemas;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\DatePicker;
 
@@ -14,25 +15,25 @@ class CategoryForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
-//                    ->default('Test article')
-                    ->placeholder('Test article')
-                    ->autofocus()
-                    ->helperText('Helper text for title')
-                    ->label('Наименование'),
-                TextInput::make('slug')->disabledOn('create'),
-//                TextInput::make('email'),
-                RichEditor::make('description')->columnSpan(2),
-                DatePicker::make('published_at')->displayFormat('d.m.Y')->native(false)->locale('ru')->format('Y m d')
-                ->minDate(now())
-                ->closeOnDateSelection(),
-                FileUpload::make('image')
-                    ->directory('preview/' . date('Y') . '/' . date('m'))
-                    ->columnSpan(2)
-                    ->imageEditor()
-                    ->multiple()
-                    ->reorderable()
-                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp']),
-            ]);
+                Section::make()->schema([
+                    TextInput::make('title')
+                        ->required()
+                        ->minLength(5)
+                        ->maxLength(255),
+//                        ->rules('required|min:5|max:255'),
+                    TextInput::make('slug')
+                        ->required()
+                        ->minLength(5)
+                        ->maxLength(255),
+//                        ->rules('required|min:5|max:255'),
+                    RichEditor::make('content'),
+
+                ])->columnSpan(2),
+                Section::make()->schema([
+                    FileUpload::make('image')
+                        ->image()
+                        ->directory('preview/' . date('Y') . '/' . date('m'))
+                ]),
+            ])->columns(3);
     }
 }
