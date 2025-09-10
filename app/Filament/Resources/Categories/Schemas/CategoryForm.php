@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Categories\Schemas;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
@@ -42,9 +43,14 @@ class CategoryForm
 
                 ])->columnSpan(2),
                 Section::make()->schema([
+                    Toggle::make('is_published')
+                    ->onColor('success')
+                    ->offColor('danger')
+                    ->default(true),
+//                    ->label('Опубликовано'),
                     FileUpload::make('image')
                         ->image()
-                        ->directory('preview/' . date('Y') . '/' . date('m'))
+                        ->directory('preview/' . date('Y') . '/' . date('m')),
                 ]),
             ])->columns(3);
     }
