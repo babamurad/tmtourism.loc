@@ -15,7 +15,12 @@ class CreateCategory extends CreateRecord
     {
         return Notification::make()
             ->success()
-            ->title('Category created')
-            ->body('Category created successfully!');
+            ->title('Категория создана')
+            ->body('Категория успешно создана!');
+    }
+    
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }
