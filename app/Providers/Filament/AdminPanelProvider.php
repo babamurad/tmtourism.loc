@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('tmtourism')
+            ->brandName('TMTOURISM.COM')
             ->registration()
 //            ->passwordReset()
             ->navigationGroups([
