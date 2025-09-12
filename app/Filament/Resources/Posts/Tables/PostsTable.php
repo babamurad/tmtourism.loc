@@ -3,9 +3,12 @@
 namespace App\Filament\Resources\Posts\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -21,17 +24,21 @@ class PostsTable
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('category_id')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('category.title')
+                    ->label('Категория')
+                    ->sortable()
+                    ->searchable(),
                 ImageColumn::make('image'),
-                IconColumn::make('status')
-                    ->boolean(),
+                ToggleColumn::make('status')
+                    ->onIcon(Heroicon::Check)
+                    ->offIcon(Heroicon::XMark)
+                    ->onColor('success')
+                    ->offColor('danger'),
                 TextColumn::make('published_at')
-                    ->dateTime()
+                    ->date('d.m.Y')
                     ->sortable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->date()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
@@ -45,6 +52,7 @@ class PostsTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
