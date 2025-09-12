@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
-    //
+    protected $fillable = [
+        'model_type',
+        'model_id',
+        'file_path',
+        'file_name',
+        'mime_type',
+    ];
+    public function model()
+    {
+        return $this->morphTo();
+    }
 }

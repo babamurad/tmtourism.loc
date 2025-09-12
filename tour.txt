@@ -98,3 +98,12 @@ darvazatour.com
 Политики отмен/возвратов на уровне тура/даты? Требуются автоматические штрафы по срокам?
 
 Хранение персональных данных (паспортные данные для LOI): требования по безопасности/шифрованию/срокам хранения?
+
+php artisan make:filament-resource Tour --generate
+php artisan make:filament-resource Service --generate
+php artisan make:filament-resource TourGroup --generate
+php artisan make:filament-resource Customer --generate
+php artisan make:filament-resource Booking --generate
+php artisan make:filament-resource Payment --generate
+php artisan make:filament-resource Review --generate
+php artisan make:filament-resource Inquiry --generate   # только View
