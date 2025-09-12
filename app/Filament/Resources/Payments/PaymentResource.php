@@ -22,7 +22,7 @@ class PaymentResource extends Resource
 
     protected static string|null|\UnitEnum $navigationGroup = 'Продажи и клиенты';
     protected static string|null|BackedEnum $navigationIcon = 'heroicon-o-credit-card';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
     protected static ?string $navigationLabel  = 'Платежы';
 
     protected static ?string $recordTitleAttribute = 'id';

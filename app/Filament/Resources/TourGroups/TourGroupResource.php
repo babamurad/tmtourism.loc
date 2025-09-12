@@ -22,7 +22,7 @@ class TourGroupResource extends Resource
 
     protected static string|null|\UnitEnum $navigationGroup = 'Туры и услуги';
     protected static string|null|BackedEnum $navigationIcon = 'heroicon-o-calendar-days';
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
     protected static ?string $navigationLabel  = 'Группы туров';
 
     protected static ?string $recordTitleAttribute = 'starts_at';

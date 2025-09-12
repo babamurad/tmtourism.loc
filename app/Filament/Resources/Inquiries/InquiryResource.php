@@ -25,7 +25,7 @@ class InquiryResource extends Resource
     protected static string|null|\UnitEnum $navigationGroup = 'Продажи и клиенты';
     protected static string|null|BackedEnum $navigationIcon = 'heroicon-o-chat-bubble-left-right';
     protected static ?int $navigationSort = 2;
-    protected static ?string $navigationLabel  = 'Запросы';
+    protected static ?string $navigationLabel  = 'Заявки';
 
     protected static ?string $recordTitleAttribute = 'name';
 

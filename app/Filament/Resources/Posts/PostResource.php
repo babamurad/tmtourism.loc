@@ -23,10 +23,10 @@ class PostResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Блог';
-
-
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
+    protected static string|null|\UnitEnum $navigationGroup = 'Контент и маркетинг';
+    protected static string|null|BackedEnum $navigationIcon = 'heroicon-o-document-text';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel  = 'Посты';
 
     public static function form(Schema $schema): Schema
     {
