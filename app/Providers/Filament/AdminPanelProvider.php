@@ -34,22 +34,25 @@ class AdminPanelProvider extends PanelProvider
             ->registration()
 //            ->passwordReset()
             ->navigationGroups([
-                NavigationGroup::make('Туры')->collapsed(),
-                NavigationGroup::make('Ссылки')->collapsed(),
-            ])
-            ->navigationItems([
-                NavigationItem::make('Google')
-                ->url('https://google.com', true)
-                ->icon('heroicon-o-bookmark')
-                ->group('Ссылки')
-                ->sort(2)
-            ])
-            ->navigationItems([
-                NavigationItem::make('YouTube')
-                    ->url('https://youtube.com', true)
-                    ->icon('heroicon-o-currency-pound')
-                    ->group('Ссылки')
-                    ->sort(1)
+                NavigationGroup::make()
+                    ->label('Туры и услуги')
+                    ->icon('heroicon-o-globe-alt')
+                    ->collapsed(),
+
+                NavigationGroup::make()
+                    ->label('Продажи и клиенты')
+                    ->icon('heroicon-o-currency-dollar')
+                    ->collapsed(),
+
+                NavigationGroup::make()
+                    ->label('Контент и маркетинг')
+                    ->icon('heroicon-o-newspaper')
+                    ->collapsed(),
+
+                NavigationGroup::make()
+                    ->label('Система')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
             ])
             ->sidebarCollapsibleOnDesktop()
             ->colors([
@@ -64,6 +67,20 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+            ])
+            ->resources([
+                \App\Filament\Resources\Tours\TourResource::class,
+                \App\Filament\Resources\TourGroups\TourGroupResource::class,
+                \App\Filament\Resources\Services\ServiceResource::class,
+
+                \App\Filament\Resources\Bookings\BookingResource::class,
+                \App\Filament\Resources\Customers\CustomerResource::class,
+                \App\Filament\Resources\Payments\PaymentResource::class,
+                \App\Filament\Resources\Inquiries\InquiryResource::class,
+
+                \App\Filament\Resources\Posts\PostResource::class,
+                \App\Filament\Resources\Categories\CategoryResource::class,
+                \App\Filament\Resources\Reviews\ReviewResource::class,
             ])
             ->middleware([
                 EncryptCookies::class,

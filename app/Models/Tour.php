@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tour extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'title',
         'description',
@@ -13,7 +16,7 @@ class Tour extends Model
         'duration_days',
         'category_id'
     ];
-    
+
     protected $casts = [
         'description' => 'array',
         'base_price_cents' => 'integer',

@@ -20,7 +20,10 @@ class TourResource extends Resource
 {
     protected static ?string $model = Tour::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|null|\UnitEnum $navigationGroup = 'Туры и услуги';
+    protected static string|null|BackedEnum $navigationIcon = 'heroicon-o-globe-alt';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel  = 'Туры';
 
     protected static ?string $recordTitleAttribute = 'title';
 

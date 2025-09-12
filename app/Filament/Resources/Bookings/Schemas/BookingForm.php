@@ -22,11 +22,11 @@ class BookingForm
                     ->numeric(),
                 Select::make('status')
                     ->options([
-            'pending' => 'Pending',
-            'confirmed' => 'Confirmed',
-            'done' => 'Done',
-            'cancelled' => 'Cancelled',
-        ])
+                                'pending' => 'Pending',
+                                'confirmed' => 'Confirmed',
+                                'done' => 'Done',
+                                'cancelled' => 'Cancelled',
+                            ])
                     ->default('pending')
                     ->required(),
                 Textarea::make('notes')
