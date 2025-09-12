@@ -22,7 +22,7 @@ class EditCategory extends EditRecord
     {
         return Notification::make()
             ->success()
-            ->title('Категория создана')
+            ->title('Категория изменена')
             ->body('Категория успешно изменена!');
     }
 

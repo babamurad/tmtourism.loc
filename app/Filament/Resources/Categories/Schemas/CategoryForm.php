@@ -39,7 +39,7 @@ class CategoryForm
                         ->disabled(),
 
 //                        ->rules('required|min:5|max:255'),
-                    RichEditor::make('content')->required(),
+                    RichEditor::make('content'),
 
                 ])->columnSpan(2),
                 Section::make()->schema([

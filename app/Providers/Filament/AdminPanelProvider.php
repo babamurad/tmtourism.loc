@@ -34,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->registration()
 //            ->passwordReset()
             ->navigationGroups([
-                NavigationGroup::make('Блог')->collapsed(),
+                NavigationGroup::make('Туры')->collapsed(),
                 NavigationGroup::make('Ссылки')->collapsed(),
             ])
             ->navigationItems([

@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\Categories\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\Action;
 use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
@@ -28,6 +29,7 @@ class CategoriesTable
                 TextColumn::make('slug')
                     ->toggleable(),
                 IconColumn::make('is_published')->sortable()
+//                    ->query(fn (Builder $query): Builder => $query->where('is_published', true))
                     ->boolean()
                     ->toggleable(),
 //                    ->icon(fn (string $state): Heroicon => match ($state) {
@@ -38,17 +40,16 @@ class CategoriesTable
 //                        '0' => 'warning',
 //                        '1' => 'success',
 //                    }),
-                    ])->defaultSort('id', 'desc')->searchPlaceholder('Search by title')
+
+                    ])->defaultSort('id', 'desc')->searchPlaceholder('Search by title')->toolbarActions([
+                DeleteBulkAction::make(),
+            ])
             ->filters([
                 //
             ])
-            ->recordActions([
+            ->actions([
                 EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                DeleteAction::make() ->successNotificationTitle('Category deleted')
             ]);
     }
 }
