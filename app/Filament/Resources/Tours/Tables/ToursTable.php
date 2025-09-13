@@ -6,7 +6,9 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class ToursTable
@@ -15,25 +17,27 @@ class ToursTable
     {
         return $table
             ->columns([
+                ImageColumn::make('image')
+                    ->circular()
+                    ->label(''),
+
                 TextColumn::make('title')
                     ->searchable(),
+
+                TextColumn::make('tourCategory.title')
+                    ->label('Категория')
+                    ->sortable(),
+
                 TextColumn::make('base_price_cents')
-                    ->numeric()
-                    ->sortable(),
+                    ->money('tmt', true) // тут можно свою валюту
+                    ->label('Цена (от)'),
+
                 TextColumn::make('duration_days')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('Дней'),
             ])
             ->filters([
-                //
+                SelectFilter::make('tourCategory')
+                    ->relationship('tourCategory', 'title'),
             ])
             ->recordActions([
                 ViewAction::make(),

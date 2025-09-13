@@ -23,7 +23,7 @@ class ServiceResource extends Resource
     protected static string|null|\UnitEnum $navigationGroup = 'Туры и услуги';
     protected static string|null|BackedEnum $navigationIcon = 'heroicon-o-cog-6-tooth';
     protected static ?int $navigationSort = 3;
-    protected static ?string $navigationLabel  = 'Сервис';
+    protected static ?string $navigationLabel  = 'Дополнительные услуги';
 
     protected static ?string $recordTitleAttribute = 'name';
 

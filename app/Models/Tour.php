@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Tour extends Model
 {
@@ -23,22 +24,22 @@ class Tour extends Model
         'duration_days' => 'integer',
         'category_id' => 'integer'
     ];
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function tourCategory(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(TourCategory::class);
     }
 
-    public function tourGroups()
+    public function tourGroups(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(TourGroup::class);
     }
 
-    public function reviews()
+    public function reviews(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Review::class);
     }
 
-    public function media()
+    public function media(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(Media::class, 'model');
     }
