@@ -69,6 +69,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentInfoWidget::class,
             ])
             ->resources([
+                \App\Filament\Resources\TourCategories\TourCategoryResource::class,
                 \App\Filament\Resources\Tours\TourResource::class,
                 \App\Filament\Resources\TourGroups\TourGroupResource::class,
                 \App\Filament\Resources\Services\ServiceResource::class,

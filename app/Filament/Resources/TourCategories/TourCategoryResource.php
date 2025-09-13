@@ -20,13 +20,29 @@ class TourCategoryResource extends Resource
 {
     protected static ?string $model = TourCategory::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|null|\UnitEnum $navigationGroup = 'Туры и услуги';
+    protected static string|null|BackedEnum $navigationIcon = 'heroicon-o-map';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel  = 'Категории туров';
 
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema
     {
         return TourCategoryForm::configure($schema);
+    }
+    
+    public static function getForm($operation, $record = null)
+    {
+        $form = parent::getForm($operation, $record);
+        
+        if ($operation === 'create') {
+            $form->after(function () {
+                return redirect(static::getUrl('index'));
+            });
+        }
+        
+        return $form;
     }
 
     public static function infolist(Schema $schema): Schema
