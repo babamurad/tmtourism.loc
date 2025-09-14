@@ -31,6 +31,12 @@ class DatabaseSeeder extends Seeder
             'password' => '123123',
             'role' => '0',
         ]);
+        User::factory()->create([
+            'name' => 'shohrateke',
+            'email' => 'shohrateke@tm.tm',
+            'password' => '123123',
+            'role' => '0',
+        ]);
 
 //        Tour::factory(10)->create();
 //        TourGroup::factory(30)->create();
