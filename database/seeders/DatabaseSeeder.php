@@ -38,9 +38,9 @@ class DatabaseSeeder extends Seeder
             'role' => '1',
         ]);
 
-//        Tour::factory(10)->create();
-//        TourGroup::factory(30)->create();
-//        Customer::factory(50)->create();
-//        Booking::factory(40)->create();
+        Tour::factory(10)->create();
+        TourGroup::factory(30)->create();
+        Customer::factory(50)->create();
+        Booking::factory(40)->create();
     }
 }
