@@ -28,18 +28,6 @@ class CategoriesTable
                     ->toggleable(),
                 TextColumn::make('slug')
                     ->toggleable(),
-                IconColumn::make('is_published')->sortable()
-//                    ->query(fn (Builder $query): Builder => $query->where('is_published', true))
-                    ->boolean()
-                    ->toggleable(),
-//                    ->icon(fn (string $state): Heroicon => match ($state) {
-//                        '0' => Heroicon::OutlinedXCircle,
-//                        '1' => Heroicon::OutlinedCheckCircle,
-//                    })
-//                    ->color(fn (string $state): string => match ($state) {
-//                        '0' => 'warning',
-//                        '1' => 'success',
-//                    }),
 
                     ])->defaultSort('id', 'desc')->searchPlaceholder('Search by title')->toolbarActions([
                 DeleteBulkAction::make(),
