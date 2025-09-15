@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\TourGroups\Schemas;
 
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -16,7 +17,7 @@ class TourGroupForm
                 Select::make('tour_id')
                     ->relationship('tour', 'title')
                     ->required(),
-                DateTimePicker::make('starts_at')
+                DatePicker::make('starts_at')
                     ->required(),
                 TextInput::make('max_people')
                     ->required()

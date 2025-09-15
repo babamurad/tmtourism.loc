@@ -13,8 +13,12 @@ class TourForm
             ->components([
                 Select::make('tour_category_id')
                     ->relationship('tourCategory', 'title')
+                    ->label('Категория тура')
                     ->searchable()
-                    ->required(),
+                    ->preload()
+                    ->required()
+                    ->placeholder('Выберите категорию')
+                    ->native(false),
 
                 TextInput::make('title')
                     ->required()
@@ -39,7 +43,7 @@ class TourForm
                     ->image()
                     ->directory('tours')
                     ->maxSize(2048)
-                    ->label('Главное фото'),
+                    ->label('Главное фото')->columnSpan(2),
             ]);
     }
 }

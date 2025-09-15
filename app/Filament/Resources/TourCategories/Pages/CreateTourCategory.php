@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateTourCategory extends CreateRecord
 {
     protected static string $resource = TourCategoryResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

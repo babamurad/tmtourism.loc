@@ -34,7 +34,7 @@ class ToursTable
 
                 TextColumn::make('duration_days')
                     ->label('Дней'),
-            ])
+            ])->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('tourCategory')
                     ->relationship('tourCategory', 'title'),

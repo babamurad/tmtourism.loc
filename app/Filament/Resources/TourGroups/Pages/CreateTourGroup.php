@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateTourGroup extends CreateRecord
 {
     protected static string $resource = TourGroupResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

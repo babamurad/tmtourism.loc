@@ -9,7 +9,8 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐪</text></svg>">
 
     <!-- Bootstrap 4 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">--}}
+    <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -18,10 +19,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
+    <script src="{{ asset('front/js/jquery.min.js') }}"></script>
 
     <!-- Bootstrap 4 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>--}}
+    <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
+
 
     <style>
         :root {
@@ -292,6 +296,9 @@
     </style>
 </head>
 <body data-spy="scroll" data-target="#navbar" data-offset="80">
+<!-- Карусель -->
+@livewire('carousel-component')
+
 <!-- Навигация -->
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
@@ -324,20 +331,7 @@
     </div>
 </nav>
 
-<!-- Герой-секция -->
-<section id="home" class="hero-section">
-    <div class="hero-overlay"></div>
-    <video class="hero-video" autoplay muted loop playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-sunrise-over-a-desert-40663-large.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-        <div class="container">
-            <h1 class="display-4 mb-4">Открой Туркменистан — сердце Великого Шёлкового пути</h1>
-            <p class="lead mb-4">Погрузитесь в древнюю историю, уникальную культуру и незабываемые пейзажи одной из самых загадочных стран Центральной Азии</p>
-            <a href="#contact" class="btn btn-primary btn-lg">Подобрать тур</a>
-        </div>
-    </div>
-</section>
+<livewire:carousel-component />
 
 <div class="section-divider"></div>
 
@@ -713,5 +707,8 @@
         });
     });
 </script>
+
+<!-- Livewire Scripts -->
+@livewireScripts
 </body>
 </html>

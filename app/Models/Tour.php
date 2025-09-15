@@ -15,18 +15,19 @@ class Tour extends Model
         'description',
         'base_price_cents',
         'duration_days',
-        'category_id'
+        'tour_category_id'
     ];
 
     protected $casts = [
         'description' => 'array',
         'base_price_cents' => 'integer',
         'duration_days' => 'integer',
-        'category_id' => 'integer'
+        'tour_category_id' => 'integer'
     ];
+
     public function tourCategory(): BelongsTo
     {
-        return $this->belongsTo(TourCategory::class);
+        return $this->belongsTo(TourCategory::class, 'tour_category_id');
     }
 
     public function tourGroups(): \Illuminate\Database\Eloquent\Relations\HasMany

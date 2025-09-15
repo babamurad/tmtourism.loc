@@ -23,7 +23,7 @@ class TourCategoriesTable
                 TextColumn::make('title'),
                 TextColumn::make('slug')
                     ->toggleable(),
-            ])
+            ])->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

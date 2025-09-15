@@ -17,16 +17,21 @@ class TourGroupFactory extends Factory
      */
     public function definition(): array
     {
-        $startDate = $this->faker->dateTimeBetween('+1 month', '+1 year');
-        $maxPeople = $this->faker->numberBetween(5, 20);
+        $max = fake()->randomElement([8, 10, 12, 16]);
+        $date = fake()->dateTimeBetween('+3 weeks', '+8 months');
+
+        // цена группы = базовая цена тура ± 10 %
+        $tour = Tour::inRandomOrder()->first();
+        $base = $tour->base_price_cents;
+        $groupPrice = (int)($base * fake()->randomFloat(2, 0.9, 1.1));
 
         return [
-            'tour_id' => Tour::factory(),
-            'starts_at' => $startDate,
-            'max_people' => $maxPeople,
-            'current_people' => $this->faker->numberBetween(0, $maxPeople),
-            'price_cents' => $this->faker->numberBetween(5000, 50000),
-            'status' => fake()->randomElement(['draft', 'open', 'closed', 'cancelled']),
+            'tour_id'          => $tour->id,
+            'starts_at'        => $date,
+            'max_people'       => $max,
+            'current_people'   => fake()->numberBetween(0, $max - 2),
+            'price_cents'      => $groupPrice,
+            'status'           => fake()->randomElement(['draft', 'open', 'closed', 'cancelled']),
         ];
     }
 }
