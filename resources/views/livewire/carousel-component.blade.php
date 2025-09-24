@@ -44,7 +44,7 @@
         .hero-carousel .carousel-control-prev,
         .hero-carousel .carousel-control-next {
             width: 5%;
-            background: rgba(0, 0, 0, 0.3);
+            /* background: rgba(0, 0, 0, 0.3); */
         }
         
         .hero-carousel .carousel-indicators {
@@ -135,5 +135,7 @@
             });
         });
     </script>
+
+    
 </div>
 
