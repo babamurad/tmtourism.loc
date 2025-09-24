@@ -60,6 +60,14 @@ class DatabaseSeeder extends Seeder
         Customer::factory(50)->create();
         Booking::factory(40)->create();
 
+        // Запуск новых сидеров
+        $this->call([
+            GuideSeeder::class,
+            RouteSeeder::class,
+            CultureItemSeeder::class,
+            ContactInfoSeeder::class,
+        ]);
+
         /*$cats = [
             ['title' => 'Классические маршруты', 'slug' => 'classic'],
             ['title' => 'Групповые туры',        'slug' => 'group'],

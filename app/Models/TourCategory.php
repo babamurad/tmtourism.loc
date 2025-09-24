@@ -10,7 +10,11 @@ class TourCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'content', 'image'];
+    protected $fillable = ['title', 'slug', 'content', 'image', 'is_published'];
+
+    protected $casts = [
+        'is_published' => 'boolean'
+    ];
 
     public function tours(): HasMany
     {

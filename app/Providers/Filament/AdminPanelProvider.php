@@ -90,6 +90,12 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Resources\Reviews\ReviewResource::class,
 
                 \App\Filament\Resources\Users\UserResource::class,
+                
+                // Новые ресурсы для компонентов
+                \App\Filament\Resources\Guides\GuideResource::class,
+                \App\Filament\Resources\Routes\RouteResource::class,
+                \App\Filament\Resources\CultureItems\CultureItemResource::class,
+                \App\Filament\Resources\ContactInfos\ContactInfoResource::class,
             ])
             ->middleware([
                 EncryptCookies::class,
