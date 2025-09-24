@@ -78,6 +78,8 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Resources\TourGroups\TourGroupResource::class,
                 \App\Filament\Resources\Services\ServiceResource::class,
 
+                \App\Filament\Resources\CarouselSlides\CarouselSlideResource::class,
+
                 \App\Filament\Resources\Bookings\BookingResource::class,
                 \App\Filament\Resources\Customers\CustomerResource::class,
                 \App\Filament\Resources\Payments\PaymentResource::class,

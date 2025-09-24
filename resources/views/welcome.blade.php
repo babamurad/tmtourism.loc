@@ -296,9 +296,6 @@
     </style>
 </head>
 <body data-spy="scroll" data-target="#navbar" data-offset="80">
-<!-- Карусель -->
-@livewire('carousel-component')
-
 <!-- Навигация -->
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
@@ -331,7 +328,8 @@
     </div>
 </nav>
 
-<livewire:carousel-component />
+<!-- Hero-секция с каруселью -->
+@livewire('carousel-component')
 
 <div class="section-divider"></div>
 
