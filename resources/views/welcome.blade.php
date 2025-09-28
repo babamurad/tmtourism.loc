@@ -323,6 +323,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">Контакты</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">О нас</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -342,6 +345,12 @@
 <div class="section-divider"></div>
 
 @livewire('home.routes-section')
+
+<div class="section-divider"></div>
+
+@livewire('home.visa-section')
+
+<div class="section-divider"></div>
 
 <div class="section-divider"></div>
 

@@ -1,0 +1,9 @@
+<div>
+    @livewire('home.tours-section')
+    @livewire('home.culture-section')
+    @livewire('home.routes-section')
+    @livewire('home.visa-section')
+    @livewire('home.guides-section')
+    @livewire('home.testimonials-section')
+    @livewire('home.contact-section')
+</div>
