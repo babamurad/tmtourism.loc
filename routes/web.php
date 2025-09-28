@@ -7,5 +7,3 @@ use Illuminate\Support\Facades\FacadeRoute;
 // });
 
 Route::get('/', \App\Livewire\HomeComponent::class);
-
-Route::get('/about', \App\Livewire\AboutPage::class);
