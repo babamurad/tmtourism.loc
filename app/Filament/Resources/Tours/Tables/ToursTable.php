@@ -29,7 +29,7 @@ class ToursTable
                     ->sortable(),
 
                 TextColumn::make('base_price_cents')
-                    ->money('tmt', true) // тут можно свою валюту
+                    ->formatStateUsing(fn ($state) => number_format($state / 100, 0, ',', ' ') . ' ₽')
                     ->label('Цена (от)'),
 
                 TextColumn::make('duration_days')

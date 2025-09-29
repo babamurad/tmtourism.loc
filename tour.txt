@@ -99,6 +99,12 @@ darvazatour.com
 
 Хранение персональных данных (паспортные данные для LOI): требования по безопасности/шифрованию/срокам хранения?
 
+github token
+cd /home/u960938720/tmtourism.com
+git pull
+
+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
+
 php artisan make:filament-resource Tour --generate
 php artisan make:filament-resource Service --generate
 php artisan make:filament-resource TourGroup --generate
@@ -114,6 +120,15 @@ php artisan make:filament-resource Inquiry --generate   # только View
 Гиды	✅	Отлично, повышает доверие.
 Контактная информация	✅	Добавьте юридический адрес или регистрационные данные (для серьезного бизнеса).
 Информация о Визе	❌ ✔️ 	Обязательно добавьте отдельный раздел или блок.
-Страница "О нас"	❌	Рекомендуется создать.
-Цены и пакеты туров	⚠️	Сделайте их более конкретными и заметными.
+Страница "О нас"	❌ ✔️	Рекомендуется создать.
+Цены и пакеты туров	⚠️ ✔️	Сделайте их более конкретными и заметными.
 Мобильная адаптивность	❓	Убедитесь, что сайт идеально работает на смартфонах (большинство туристов ищут туры с телефона).
+
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+
+Guides
+Routes
+Culture Items
+Contact Infos

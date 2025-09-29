@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Home;
+namespace App\Livewire;
 
 use App\Models\Tour;
 use Livewire\Component;
 
-class ToursSection extends Component
+class ToursComponent extends Component
 {
     public $tours;
 
@@ -18,6 +18,6 @@ class ToursSection extends Component
 
     public function render()
     {
-        return view('livewire.home.tours-section');
+        return view('livewire.tours-component');
     }
 }
