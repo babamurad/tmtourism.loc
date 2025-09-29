@@ -6,7 +6,10 @@
             <div class="carousel-inner">
                 @forelse($reviews as $index => $review)
                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" class="testimonial-img" alt="{{ $review->user->name ?? 'Клиент' }}" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80"
+                             srcset="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80 320w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80 768w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80 1200w"
+                             sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, 1200px"
+                             class="testimonial-img" alt="{{ $review->user->name ?? 'Клиент' }}" loading="lazy">
                         <div class="testimonial-content">
                             <h5>{{ $review->user->name ?? 'Анонимный клиент' }}</h5>
                             <div class="rating mb-2">

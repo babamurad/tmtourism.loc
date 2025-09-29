@@ -5,6 +5,6 @@
     @livewire('home.visa-section')
     @livewire('home.guides-section')
     @livewire('home.testimonials-section')
-    @livewire('home.contact-section')
-   @livewire('home.about-section')
+    @livewire('home.about-section')
+    @livewire('home.contact-section')   
 </div>
