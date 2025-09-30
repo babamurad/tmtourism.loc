@@ -23,6 +23,7 @@ class CarouselComponent extends Component
                 ];
             })
             ->toArray();
+
     }
 
     public function render()

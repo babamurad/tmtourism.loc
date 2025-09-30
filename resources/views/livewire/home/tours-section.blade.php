@@ -5,7 +5,7 @@
         <div class="row">
             @forelse($tours as $tour)
                 <div class="col-md-4 mb-4">
-                    <div class="card">
+                    <div class="card h-100">
                         @if($tour->media->first())
                             <img src="{{ $tour->media->first()->url }}"
                                  srcset="{{ $tour->media->first()->url }} 320w, {{ $tour->media->first()->url }} 768w, {{ $tour->media->first()->url }} 1200w"

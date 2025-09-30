@@ -17,4 +17,9 @@ class Media extends Model
     {
         return $this->morphTo();
     }
+
+    public function getUrlAttribute(): string
+    {
+        return asset('uploads/' . $this->file_path);
+    }
 }

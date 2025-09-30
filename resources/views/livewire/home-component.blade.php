@@ -1,4 +1,5 @@
 <div>
+    @livewire('home.tours-section')
     @livewire('home.booking-steps-section')
     @livewire('home.culture-section')
     @livewire('home.routes-section')

@@ -9,7 +9,7 @@
         <div class="carousel-inner">
             @foreach($slides as $index => $slide)
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                    <img src="{{ asset('uploads/carousel/' . $slide['image']) }}" class="d-block w-100" alt="{{ $slide['alt'] }}" loading="lazy" style="background-repeat: no-repeat; background-size: cover;">
+                    <img src="{{ asset('uploads/' . $slide['image']) }}" class="d-block w-100" alt="{{ $slide['alt'] }}" loading="lazy" style="background-repeat: no-repeat; background-size: cover;">
                     <div class="carousel-caption">
                         <h3>{{ $slide['title'] }}</h3>
                         <p>{!! $slide['description'] !!}</p>
