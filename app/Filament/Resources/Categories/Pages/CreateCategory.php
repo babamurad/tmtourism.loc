@@ -18,7 +18,7 @@ class CreateCategory extends CreateRecord
             ->title('Категория создана')
             ->body('Категория успешно создана!');
     }
-    
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
