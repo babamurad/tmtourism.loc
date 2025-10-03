@@ -2,13 +2,8 @@
 
 namespace App\Filament\Resources\Tours\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Actions\ViewAction;
-use Filament\Tables\Columns\ImageColumn;
+use App\Filament\Tables\Columns\MapColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class ToursTable
@@ -17,36 +12,18 @@ class ToursTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
-                    ->circular()
-                    ->label(''),
-
-                TextColumn::make('title')
-                    ->searchable(),
-
-                TextColumn::make('tourCategory.title')
-                    ->label('Категория')
-                    ->sortable(),
-
+                TextColumn::make('id')->sortable(),
+                TextColumn::make('title')->searchable(),
+                TextColumn::make('tourCategory.name')->label('Категория'),
                 TextColumn::make('base_price_cents')
-                    ->formatStateUsing(fn ($state) => number_format($state / 100, 0, ',', ' ') . ' ₽')
-                    ->label('Цена (от)'),
+                    ->money('rub')
+                    ->label('Цена, ₽'),
+                TextColumn::make('duration_days')->label('Дней'),
 
-                TextColumn::make('duration_days')
-                    ->label('Дней'),
-            ])->defaultSort('created_at', 'desc')
-            ->filters([
-                SelectFilter::make('tourCategory')
-                    ->relationship('tourCategory', 'title'),
-            ])
-            ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                /* ↓ наша новая колонка ↓ */
+                MapColumn::make('map')
+                    ->label('Карта маршрута')
+                    ->width('320px'),
             ]);
     }
 }

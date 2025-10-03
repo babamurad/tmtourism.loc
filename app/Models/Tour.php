@@ -13,6 +13,7 @@ class Tour extends Model
     protected $fillable = [
         'title',
         'description',
+        'map_id',
         'base_price_cents',
         'duration_days',
         'tour_category_id'

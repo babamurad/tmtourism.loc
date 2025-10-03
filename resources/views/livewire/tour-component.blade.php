@@ -2,7 +2,7 @@
     <div class="container">
         <h2 class="text-center section-title">{{ $tour->title }}</h2>
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-12 p-2">
                 <div class="card">
                     @if($tour->media->first())
                         <img src="{{ $tour->media->first()->url }}"
@@ -13,14 +13,37 @@
                         <img src="https://images.unsplash.com/photo-1580502304784-8985b7eb7260?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=338&q=80" class="card-img-top" alt="{{ $tour->title }}" loading="lazy">
                     @endif
                     <div class="card-body">
-                        <p class="card-text">{{ $tour->description }}</p>
-                        <div class="d-flex justify-content-between align-items-center p-1">
-                             <span class="text-muted">{{ $tour->duration_days }} дней</span>
-                             <span class="font-weight-bold text-primary" style="font-size: 1.2rem; color: #ff6600;">{{ number_format($tour->base_price_cents / 100, 0, ',', ' ') }} ₽</span>
-                         </div>
+                        @if(!empty($tour->description) && is_string($tour->description))
+                            <div class="card-text">{!! $tour->description !!}</div>
+                        @endif
+                        
+                        @if($tour->map_id)
+                            <div class="mt-4 mb-4" style="width: 100%; height: 480px;">
+                                <iframe 
+                                    src="https://www.google.com/maps/d/embed?mid={{ $tour->map_id }}"
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        @endif
+                        
+                        <div class="d-flex justify-content-between align-items-center p-1 mt-3">
+                            <span class="text-muted">{{ $tour->duration_days }} дней</span>
+                            <span class="font-weight-bold text-primary" style="font-size: 1.2rem; color: #ff6600;">{{ number_format($tour->base_price_cents / 100, 0, ',', ' ') }} ₽</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        @if($tour->map_id)
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid={{ $tour->map_id }}&ehbc=2E312F"
+                    width="100%" height="180" style="border:0;" allowfullscreen loading="lazy">
+            </iframe>
+        @else
+            <span class="text-gray-400">—</span>
+        @endif
     </div>
 </section>
