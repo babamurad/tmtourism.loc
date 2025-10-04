@@ -9,6 +9,11 @@ class CreateTour extends CreateRecord
 {
     protected static string $resource = TourResource::class;
 
+    protected function afterCreate(): void
+    {
+        $this->syncMedia($this->record);
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

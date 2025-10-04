@@ -11,6 +11,11 @@ class EditTour extends EditRecord
 {
     protected static string $resource = TourResource::class;
 
+    protected function afterSave(): void
+    {
+        $this->syncMedia($this->record);
+    }
+
     protected function getHeaderActions(): array
     {
         return [
