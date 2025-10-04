@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources\Tours\Schemas;
 
-use Filament\Forms\Components\{FileUpload, RichEditor, Select, TextInput};
+use Filament\Forms\Components\{RichEditor, Select, TextInput};
+use Filament\Forms\Components\{FileUpload, Textarea};
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Fieldset;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class TourForm
 {
@@ -39,11 +42,19 @@ class TourForm
                     ->required()
                     ->label('Длительность, дней'),
 
-                FileUpload::make('image')
-                    ->image()
-                    ->directory('tours')
-                    ->maxSize(2048)
-                    ->label('Главное фото')->columnSpan(2),
+                Fieldset::make('Изображение')
+                    ->schema([
+                        SpatieMediaLibraryFileUpload::make('image')
+                            ->collection('tour_images')   // теперь метод есть
+                            ->image()
+                            ->maxSize(2048)
+                            ->label('Главное фото'),
+                    ])
+                    ->columnSpan(2),
+
+                TextInput::make('map_id')
+                    ->nullable()
+                    ->label('ID карты'),
             ]);
     }
 }

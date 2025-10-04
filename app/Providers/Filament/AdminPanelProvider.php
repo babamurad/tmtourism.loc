@@ -110,6 +110,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->favicon(asset('favicon.ico'));
     }
 }

@@ -5,6 +5,8 @@ namespace App\Filament\Resources\Tours\Tables;
 use App\Filament\Tables\Columns\MapColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 
 class ToursTable
 {
@@ -24,6 +26,15 @@ class ToursTable
                 MapColumn::make('map')
                     ->label('Карта маршрута')
                     ->width('320px'),
+            ])
+            ->actions([
+                EditAction::make(),
+                ViewAction::make(),
+            ])
+            ->defaultSort('id', 'desc')
+            ->searchPlaceholder('Search by title')
+            ->toolbarActions([
+                \Filament\Actions\CreateAction::make(),
             ]);
     }
 }

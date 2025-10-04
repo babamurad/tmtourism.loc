@@ -18,9 +18,9 @@
                         @endif
                         
                         @if($tour->map_id)
-                            <div class="mt-4 mb-4" style="width: 100%; height: 480px;">
+                            <div class="mt-4 mb-4 px-3" style="width: 100%; height: 45rem;">
                                 <iframe 
-                                    src="https://www.google.com/maps/d/embed?mid={{ $tour->map_id }}"
+                                    src="https://www.google.com/maps/d/embed?mid={{ $tour->map_id }}&z=7.2"
                                     width="100%" 
                                     height="100%" 
                                     style="border:0;" 
@@ -38,12 +38,5 @@
                 </div>
             </div>
         </div>
-        @if($tour->map_id)
-            <iframe src="https://www.google.com/maps/d/u/0/embed?mid={{ $tour->map_id }}&ehbc=2E312F"
-                    width="100%" height="180" style="border:0;" allowfullscreen loading="lazy">
-            </iframe>
-        @else
-            <span class="text-gray-400">—</span>
-        @endif
     </div>
 </section>

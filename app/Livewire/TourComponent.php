@@ -12,6 +12,7 @@ class TourComponent extends Component
     public function mount($id)
     {
         $this->tour = Tour::with('tourCategory', 'media')->find($id);
+        //dd($this->tour);
     }
 
     public function render()

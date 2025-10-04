@@ -10,7 +10,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Actions\DeleteBulkAction;
 
 class TourGroupsRelationManager extends RelationManager
 {
@@ -72,11 +72,11 @@ class TourGroupsRelationManager extends RelationManager
                     ]),
             ])
             ->headerActions([
-                \Filament\Tables\Actions\CreateAction::make(),
+                \Filament\Actions\CreateAction::make(),
             ])
             ->actions([
-                \Filament\Tables\Actions\EditAction::make(),
-                \Filament\Tables\Actions\DeleteAction::make(),
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 DeleteBulkAction::make(),
