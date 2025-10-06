@@ -60,4 +60,33 @@ class TourResource extends Resource
             'edit' => EditTour::route('/{record}/edit'),
         ];
     }
+    public static function syncMedia($record, $data): void
+    {
+        $uploadedFiles = $data['attachments'] ?? [];
+
+        // Удаляем старые медиафайлы, которых нет в новом списке
+        $record->media->each(function ($media) use ($uploadedFiles) {
+            $filePath = $media->file_path;
+            if (!in_array($filePath, $uploadedFiles)) {
+                $media->delete();
+            }
+        });
+
+        // Добавляем новые медиафайлы
+        foreach ($uploadedFiles as $filePath) {
+            // Проверяем, является ли файл новым (не был загружен ранее)
+            if (!$record->media->where('file_path', $filePath)->first()) {
+                $fullPath = public_path('uploads/' . $filePath);
+                if (file_exists($fullPath)) {
+                    \App\Models\Media::create([
+                        'model_type' => \App\Models\Tour::class,
+                        'model_id' => $record->id,
+                        'file_path' => $filePath,
+                        'file_name' => basename($filePath),
+                        'mime_type' => mime_content_type($fullPath),
+                    ]);
+                }
+            }
+        }
+    }
 }

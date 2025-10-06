@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Tour extends Model  implements HasMedia
+class Tour extends Model
 {
     use HasFactory;
-    use InteractsWithMedia;
 
     protected $fillable = [
         'title',
@@ -42,5 +39,9 @@ class Tour extends Model  implements HasMedia
     public function reviews(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Review::class);
+    }
+    public function media(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Media::class, 'model_id')->where('model_type', Tour::class);
     }
 }

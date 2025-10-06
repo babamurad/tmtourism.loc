@@ -12,6 +12,7 @@ class Media extends Model
         'file_path',
         'file_name',
         'mime_type',
+         'order_column',
     ];
     public function model()
     {
